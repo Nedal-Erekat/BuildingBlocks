@@ -1,12 +1,13 @@
-using BuildingBlocks.Contracts.Messaging;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-public class InMemoryEventBus : IEventBus
+namespace BuildingBlocks.EventBus.InMemory;
+
+public class InMemoryEventBus : Contracts.Messaging.IEventBus
 {
-    private readonly IServiceProvider _serviceProvider;
+    private readonly System.IServiceProvider _serviceProvider;
     private static readonly Dictionary<Type, List<Type>> _handlers = new();
 
-    public InMemoryEventBus(IServiceProvider serviceProvider)
+    public InMemoryEventBus(System.IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }
